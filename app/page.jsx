@@ -134,9 +134,10 @@ export default function Home() {
         <div id="backdrop-filter" style={{ transition: "background-color .2s ease-in-out", zIndex: 0, position: "absolute", height: "100vh", width: "100vw", backgroundColor: backgroundColor }}></div>
         <div style={{ transform: options, transition: "transform .4s ease-in-out", position: "absolute", bottom: "45vh", right: "15vw" }}>
           <div style={{ transform: "translateX(-40vw) translateY(-40vh)" }}>
-            {fanOutChat(fakeDropdownData, setCurrentChat).map(chatBox => {
-              return chatBox
+            {fanOutChat(fakeDropdownData, setCurrentChat).map((chatBox, index) => {
+              return <React.Fragment key={"chat" + index}>{chatBox}</React.Fragment>;
             })}
+
           </div>
         </div>
 
@@ -148,10 +149,10 @@ export default function Home() {
 
 
       <div id="Profiles " style={{ display: "flex", opacity: opacity, zIndex: z, transition: "opacity .2s ease-in-out" }}>
-        {Personas.map(persona => {
+        {Personas.map(persona,index => {
           return (
-            <div key={persona.name} style={{ display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: "center" }}>
-              <div key={persona.image} onClick={() => { setCurrentUser(persona) }} style={{ cursor: "pointer", margin: "0 2vw 0 2vw", position: "relative", width: "18vw", height: "18vw", borderRadius: '50%', overflow: "hidden" }}>
+            <div key={"persona" + index} style={{ display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: "center" }}>
+              <div onClick={() => { setCurrentUser(persona) }} style={{ cursor: "pointer", margin: "0 2vw 0 2vw", position: "relative", width: "18vw", height: "18vw", borderRadius: '50%', overflow: "hidden" }}>
                 <Image src={persona.image} layout="fill" objectFit="cover" alt="makoto"></Image>
               </div>
               <div className={arsenal.className} style={{ fontSize: "1.5vw", transform: "scale(1.15,1)", marginTop: "2vh" }}>{persona.name}</div>
@@ -176,9 +177,9 @@ export default function Home() {
       </div>
 
       {
-        fakeDropdownData.map(entry => {
+        fakeDropdownData.map(entry,index => {
           return (
-            <div key={"description" + entry.message} style={{ position: "absolute", bottom: 0, transform: "translateX(-49.9vw) " + chatAnimation, transition: "transform .2s ease-in-out" }}>
+            <div key={"description" +index } style={{ position: "absolute", bottom: 0, transform: "translateX(-49.9vw) " + chatAnimation, transition: "transform .2s ease-in-out" }}>
               <div id="ChatBox" style={{ opacity: currentChat == entry.message ? 1 : 0, position: "absolute", bottom: "29vh", left: "29.2vw" }}>
                 <ChatBox>
                   <div>{entry.description}</div>
