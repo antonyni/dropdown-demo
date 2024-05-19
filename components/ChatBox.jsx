@@ -5,7 +5,7 @@ const arsenal = Arsenal({weight:"400",subsets:['latin']})
 
 
 
-const OptionSelect = ({ style, children, isSelected, rotate , setCurrentChat, name, currentName}) => {
+const ChatBox = ({ style, children, isSelected, rotate }) => {
     const [mainBackgroundColor, setMainBackgroundColor] = useState("black");
     const [secondaryBackgroundColor, setSecondaryBackgroundColor] = useState("white");
     const [scale, setScale] = useState("scale(.7)");
@@ -23,14 +23,12 @@ const OptionSelect = ({ style, children, isSelected, rotate , setCurrentChat, na
         setSecondaryBackgroundColor(mainBackgroundColor == "black" ? "black" : "white");
         setScale(scale == "scale(.7)" ? "scale(.77)" : "scale(.7)");
         setZIndex(zIndex === 5 ? 6 : 5);
-        setCurrentChat(currentName == name ? null : name);
-        console.log(name,currentName);
-
     }
 
 
     return (
-        <div onClick={isSelected} onMouseEnter={invertColorsAndScale} onMouseLeave={invertColorsAndScale} style={{
+        <div
+         style={{
             ...style,
             transform: scale + " " + rotate + " translateX(0vw)",
             transition: "transform .025s linear",
@@ -41,7 +39,7 @@ const OptionSelect = ({ style, children, isSelected, rotate , setCurrentChat, na
             zIndex: zIndex,
 
         }}>
-            <div>
+            <div style={{transform:"rotateY(180deg) scale(1.8,1.8)"}}>
                 <div id="main-text-box" style={{
                     marginLeft: (boxRatioWidth / 2) * mainTextBoxWidth + "vw",
                     marginTop: (boxRatioHeight / 2) * mainTextBoxHeight + "vw",
@@ -62,8 +60,8 @@ const OptionSelect = ({ style, children, isSelected, rotate , setCurrentChat, na
                         justifyContent: 'center',
                         alignItems: "center",
                         position: "absolute",
-                        transform:"scale(1.15,1)",
-                        fontSize:"1.4vw"
+                        transform:"scale(1.15,1) rotateY(180deg)",
+                        fontSize:".9vw"
 
                     }} 
                     className={arsenal.className}
@@ -80,24 +78,6 @@ const OptionSelect = ({ style, children, isSelected, rotate , setCurrentChat, na
                     width: mainTextBoxWidth * (1 + boxRatioWidth) + "vw",
 
                 }}></div>
-                <div id="background-triangle" style={{
-                    marginTop: "3.2vw",
-                    marginLeft: "22vw",
-                    position: "absolute",
-                    borderRight: mainTriangleHeight * (1 + traingleRatioHeight) * 1.3 + "vw solid transparent",
-                    borderBottom: mainTriangleHeight * (1 + traingleRatioHeight) * 2 / 3 + "vw solid " + secondaryBackgroundColor,
-                }}
-                >
-                    <div id="main-triangle" style={{
-                        zIndex: 4,
-                        marginTop: (mainTriangleHeight * traingleRatioHeight) / 2 / 1.3 + "vw",
-                        marginLeft: (mainTriangleHeight * traingleRatioHeight) / 2 / 1.5 + "vw",
-                        position: "absolute",
-                        borderRight: mainTriangleHeight * 1.3 + "vw solid transparent",
-                        borderBottom: mainTriangleHeight * 2 / 3 + "vw solid " + mainBackgroundColor,
-                    }}
-                    ></div>
-                </div>
             </div>
 
 
@@ -106,4 +86,4 @@ const OptionSelect = ({ style, children, isSelected, rotate , setCurrentChat, na
     )
 }
 
-export default OptionSelect
+export default ChatBox
