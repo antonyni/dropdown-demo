@@ -119,7 +119,7 @@ export default function Home() {
     for (let i = 0; i < fakeDropdownData.length; i++) {
       const translateXValue = i % 2 == 0 ? -5 : 0;
       chatOutput.push(
-        <OptionSelect key={"chat" + fakeDropdownData[i].message} setCurrentChat={setCurrentChat} currentName={currentChat} name={fakeDropdownData[i].message} isHovered={setCurrentChat} isSelected={fakeDropdownData[i].onClick} key={"ChatBox-" + i} style={{ marginTop: (i * marginTopRatio) + "vw" }} rotate={"rotate(" + ((i * -angle) + angleOffset) + "deg) translateX(" + translateXValue + "vw) "}>
+        <OptionSelect key={"chat" + fakeDropdownData[i].message} setCurrentChat={setCurrentChat} currentName={currentChat} name={fakeDropdownData[i].message} isSelected={fakeDropdownData[i].onClick} key={"ChatBox-" + i} style={{ marginTop: (i * marginTopRatio) + "vw" }} rotate={"rotate(" + ((i * -angle) + angleOffset) + "deg) translateX(" + translateXValue + "vw) "}>
           {fakeDropdownData[i].message}
         </OptionSelect>
       )
