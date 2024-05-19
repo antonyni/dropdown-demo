@@ -68,7 +68,7 @@ const OptionSelect = ({ style, children, isSelected, rotate , setCurrentChat, na
                     }} 
                     className={arsenal.className}
                     >
-                        {children}
+                        {name}
                     </div>
                 </div>
                 <div id="background-text-box" style={{

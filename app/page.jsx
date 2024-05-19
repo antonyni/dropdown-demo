@@ -119,7 +119,6 @@ export default function Home() {
       const translateXValue = i % 2 == 0 ? -5 : 0;
       chatOutput.push(
         <OptionSelect key={"chat" + fakeDropdownData[i].message} setCurrentChat={setCurrentChat} currentName={currentChat} name={fakeDropdownData[i].message} isSelected={fakeDropdownData[i].onClick} style={{ marginTop: (i * marginTopRatio) + "vw" }} rotate={"rotate(" + ((i * -angle) + angleOffset) + "deg) translateX(" + translateXValue + "vw) "}>
-          {fakeDropdownData[i].message}
         </OptionSelect>
       )
     }
@@ -152,7 +151,7 @@ export default function Home() {
         {Personas.map(persona => {
           return (
             <div key={persona.name} style={{ display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: "center" }}>
-              <div onClick={() => { setCurrentUser(persona) }} style={{ cursor: "pointer", margin: "0 2vw 0 2vw", position: "relative", width: "18vw", height: "18vw", borderRadius: '50%', overflow: "hidden" }}>
+              <div key={persona.image} onClick={() => { setCurrentUser(persona) }} style={{ cursor: "pointer", margin: "0 2vw 0 2vw", position: "relative", width: "18vw", height: "18vw", borderRadius: '50%', overflow: "hidden" }}>
                 <Image src={persona.image} layout="fill" objectFit="cover" alt="makoto"></Image>
               </div>
               <div className={arsenal.className} style={{ fontSize: "1.5vw", transform: "scale(1.15,1)", marginTop: "2vh" }}>{persona.name}</div>
