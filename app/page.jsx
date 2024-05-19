@@ -135,7 +135,7 @@ export default function Home() {
         <div style={{ transform: options, transition: "transform .4s ease-in-out", position: "absolute", bottom: "45vh", right: "15vw" }}>
           <div style={{ transform: "translateX(-40vw) translateY(-40vh)" }}>
             {fanOutChat(fakeDropdownData, setCurrentChat).map((chatBox, index) => {
-              return <React.Fragment key={"chat" + index}>{chatBox}</React.Fragment>;
+              return <div key={"chat" + index}>{chatBox}</div>;
             })}
 
           </div>
@@ -149,7 +149,7 @@ export default function Home() {
 
 
       <div id="Profiles " style={{ display: "flex", opacity: opacity, zIndex: z, transition: "opacity .2s ease-in-out" }}>
-        {Personas.map(persona,index => {
+        {Personas.map((persona,index) => {
           return (
             <div key={"persona" + index} style={{ display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: "center" }}>
               <div onClick={() => { setCurrentUser(persona) }} style={{ cursor: "pointer", margin: "0 2vw 0 2vw", position: "relative", width: "18vw", height: "18vw", borderRadius: '50%', overflow: "hidden" }}>
@@ -177,7 +177,7 @@ export default function Home() {
       </div>
 
       {
-        fakeDropdownData.map(entry,index => {
+        fakeDropdownData.map((entry,index) => {
           return (
             <div key={"description" +index } style={{ position: "absolute", bottom: 0, transform: "translateX(-49.9vw) " + chatAnimation, transition: "transform .2s ease-in-out" }}>
               <div id="ChatBox" style={{ opacity: currentChat == entry.message ? 1 : 0, position: "absolute", bottom: "29vh", left: "29.2vw" }}>
