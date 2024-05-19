@@ -42,7 +42,6 @@ export default function Home() {
   const [currentPic, setCurrentPic] = useState("translateX(30vw)");
 
   useEffect(() => {
-    console.log(chatAnimation);
     if (currentUser) {
       setDroppedDown(true);
       setChatAnimation("translateY(3vh)");
@@ -151,7 +150,7 @@ export default function Home() {
 
       <div id="Profiles " style={{ display: "flex", opacity: opacity, zIndex: z, transition: "opacity .2s ease-in-out" }}>
         {Personas.map(persona => {
-          return <div style={{ display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: "center" }}>
+          return <div key={persona.name} style={{ display: "flex", flexDirection: "column", justifyContent: 'center', alignItems: "center" }}>
             <div onClick={() => { setCurrentUser(persona) }} key={persona.name} style={{ cursor: "pointer", margin: "0 2vw 0 2vw", position: "relative", width: "18vw", height: "18vw", borderRadius: '50%', overflow: "hidden" }}>
               <Image src={persona.image} layout="fill" objectFit="cover" alt="makoto"></Image>
             </div>
